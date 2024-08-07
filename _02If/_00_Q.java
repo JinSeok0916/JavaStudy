@@ -28,14 +28,13 @@ public class _00_Q {
 		// 0~1 사이이면 보너스 점수를 획득한다.
 		// 보너스 점수는 현재 point의 10%이다.
 		if (x >= 0 && x <= 12) {
-			point += 10;
 			if (x >= 0 && x <= 1) {
 				point *= 1.1;
 			}
+			point += 10;
 		}
 		System.out.println(point);
-		
-		
+				
 	}
 
 }
