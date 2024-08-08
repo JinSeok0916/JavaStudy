@@ -25,7 +25,8 @@ public class _00_Q {
 			if (a[i] >= 50) {
 				sum += a[i];
 			}
-		} System.out.println(sum);
+		}
+		System.out.println(sum);
 		
 		// 평균을 구하시오. 단, 50점 이상
 		int avg = 0;
@@ -34,7 +35,8 @@ public class _00_Q {
 			if (a[i] >= 50) {
 				cnt++;
 			}
-		} avg = sum / cnt;  
+		}
+		avg = sum / cnt;  
 		System.out.println(avg);
 		// 평균을 구하시오. 단, 최저 점수는 제외
 		int min = 100;
@@ -43,8 +45,10 @@ public class _00_Q {
 		for (int i = 0; i < 5; i++) {
 			if (min > a[i]) {
 				min = a[i];
-			} sum1 += a[i];
-		} avg1 = (sum1 - min) / 4;
+			} 
+			sum1 += a[i];
+		} 
+		avg1 = (sum1 - min) / 4;
 		System.out.println(avg1);
 		
 		
