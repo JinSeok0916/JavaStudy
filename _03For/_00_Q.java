@@ -3,16 +3,18 @@ package _03For;
 public class _00_Q {
 
 	public static void main(String[] args) {
+		// a배열이 주어졌을 때 배열의 값을 출력하시오.
 		int[] a = {30,40,50,55,65};
 		for (int i = 4; i >= 0; i--) {
 			System.out.println(a[i]);
 		}
 		
+		// 배열의 값을 출력했을 때 40,50,55,65,30 순서로 나오도록 하시오.
 		for (int i = 0; i < 5; i++) {
 			System.out.println(a[(i + 1) % 5]);
 		}
 		
-		// '배열 순회를 반복'하면서 '값의 조건 판단' 후 출력
+		// for + if : '배열 순회를 반복'하면서 '값의 조건 판단' 후 출력
 		for (int i = 0; i < 5; i++) {
 			if (a[i] >= 50) {
 				System.out.println(a[i]);
