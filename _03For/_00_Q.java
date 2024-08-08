@@ -3,7 +3,7 @@ package _03For;
 public class _00_Q {
 
 	public static void main(String[] args) {
-		// a배열이 주어졌을 때 배열의 값을 출력하시오.
+		// 배열이 주어졌을 때 배열의 값을 역순으로 출력하시오.
 		int[] a = {30,40,50,55,65};
 		for (int i = 4; i >= 0; i--) {
 			System.out.println(a[i]);
@@ -40,6 +40,7 @@ public class _00_Q {
 		}
 		avg = sum / cnt;  
 		System.out.println(avg);
+		
 		// 평균을 구하시오. 단, 최저 점수는 제외
 		int min = 100;
 		double sum1 = 0;
