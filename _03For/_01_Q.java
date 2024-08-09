@@ -86,24 +86,26 @@ public class _01_Q {
 		int fibC = 1;
 		int sumFib = 0;
 		for (int a = 1; a < 8; a++) {
-			if (a == 1 || a == 2) {
-				fibC = 1;
-				sumFib += fibC;
-				System.out.println(fibC);
-			} if (a >= 3) {
-			fibB = fibA;
+			System.out.println(fibC);
 			fibA = fibC;
 			fibC = fibB + fibA;
+			fibB = fibA;
 			sumFib += fibC;
-			System.out.println(fibC);
-			}
 		}
 		System.out.println("합한 값"+":"+sumFib);
 		
 		// 9. 피보나치 수열 2
 		//	  b를 피보나치 수로 정의한다.
 		//	  b의 변화는 1 1 2 3 5 8 13 이 된다.
-		
+		int fibD = 1;
+		int fibE = 0;
+		int fibF = 1;
+		for (int b = 1; b < 20; b = fibF) {
+			fibD = fibF;
+			fibF = fibE + fibD;
+			fibE = fibD;
+			System.out.println(fibF);
+		}
 		
 		
 		// 10. 987654321이라는 숫자가 있다. 변수 2개와 for문 한개로
