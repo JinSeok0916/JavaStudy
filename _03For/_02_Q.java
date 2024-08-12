@@ -32,7 +32,7 @@ public class _02_Q {
 		
 		// 4. arr배열에서 배열의 값이 짝수인 것만 출력하시오.
 		System.out.println("문제 4");
-		int[] arr = {45,23,25,64,3,24,28};
+		int[] arr = {45,23,25,64,3,24,48};
 		for (int e = 0; e < 7; e++) {
 			if (arr[e] % 2 == 0) {
 				System.out.println(arr[e]);
@@ -112,7 +112,7 @@ public class _02_Q {
 			} if (k - i > 0) {
 				m = k - i;
 			} if (m > n) {
-				n = m;
+				n = m + 1 ;
 			}
 		}
 		System.out.println("길이 "+n);
@@ -134,7 +134,7 @@ public class _02_Q {
 				if (A[t] == A[t-1]) {
 					p = t;
 				}
-			} if (t != 0 && t != 23 && A[t] == A[t+1] && (A[t] != A[t-1])) {
+			} if (t != 0 && t != 23 && A[t] == A[t+1] && (A[t] != A[t-1]))                             {
 				o = t;
 			} if (t != 0 && t != 23 && A[t] == A[t-1] && (A[t] != A[t+1])) {
 				p = t;
@@ -155,7 +155,7 @@ public class _02_Q {
 		int z = 0;
 		int v = 0;
 		char textT = ' ';
-		for (int u = 0; u < 22; u++) {
+		for (int u = 0; u < ttt.length(); u++) {
 			char w = ttt.charAt(u);
 			if (u == 0) {
 				if (w == ttt.charAt(u+1)) {
@@ -190,7 +190,19 @@ public class _02_Q {
 		// 15 . 아래 문자열을 압축하시오. 압축하는 방법 : a2b3c3a4d2b3a5
 		System.out.println("문제 15");
 		String text ="aabbbcccaaaaddbbbaaaaa";
-		
+		String textZip = "";
+		int cntText = 0;
+		char bS = text.charAt(0);
+		for (int tt = 0; tt < text.length(); tt++) {
+			if (bS == text.charAt(i)) {
+				cntText++;
+			} else {
+				textZip = textZip + bS + cntText;
+				bS = text.charAt(i);
+				cntText = 1;
+			}
+		}
+		System.out.println(textZip);
 		
 		
 		
