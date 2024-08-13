@@ -46,16 +46,24 @@ public class _03_Q {
 		// 3. letter 배열은 word 문자열 알파벳의 위치이다.
 		//	  letter 배열의 암호를 풀어서 편지의 내용을 출력하시오.
 		System.out.println("3번 문제");
+//		int[] letter = {8,12,4,13,2,14,4,5};
 		String word = "gehoudfkimjnlvy";
-		
+		char[] letterWord = new char [8];
+		for (int i = 0; i < 8; i++) {
+			letterWord[i] = word.charAt(letter[i]); 
+			if (i == 7) {
+				System.out.println(letterWord[i]);
+			} else
+			System.out.print(letterWord[i]);
+		}
 		
 		// 4. arr배열에서 0이 의미하는 것은 공터이다.
 		//	  size는 건물의 크기이다. 건물은 하나만 짓는다. 공터는 연속적으로 있어야한다.
 		//	  size 설정값에 따라 공터에 건물을 지을 수 있는 위치는 모두 몇개인가?
 		//	  size가 2일 경우에 7개이다.
 		System.out.println("4번 문제");
-		int[] arr = {0,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,1};
-		int size = 5;
+		int[] arr = {1,0,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,1};
+		int size = 2;
 		int cnt = 0;
 		for (int i = 0; i < arr.length - (size - 1); i++) {
 			if (arr[i] == 0 && arr[i] == arr[i+size-1]) {
@@ -88,13 +96,37 @@ public class _03_Q {
 		//	  이러한 방식으로 배열의 뒤까지 반복하면 맨 뒤에 가장 큰 수가 배치될 것이다.
 		//	  위와 같은 방식으로 가장 큰 수를 구하시오.
 		System.out.println("7번 문제");
-		System.out.println(b[b.length-1]);
+		int A = 0;
+		for (int i = 0; i < b.length-1; i++) {
+			if (b[i] > b[i+1]) {
+				A = b[i];
+				b[i] = b[i+1];
+				b[i+1] = A;
+				A = 0;
+			}
+		}
+		for (int i = 0; i < b.length; i++) {
+			System.out.print(b[i] + " ");
+		}
+		System.out.println();
+		System.out.println(b[5]);
 		
 		// 8. 철수는 배열의 0번 인덱스에 가장 큰 값을 저장하면 될 것이라고 생각한다.
 		//	  0번 인덱스가 가장 큰 값이라고 정의하고 1번부터 마지막까지 순회하면서
 		//	  가장 큰 값이 나오면 가장 큰 값을 갱신한다.
 		//	  위와 같은 방식으로 가장 큰 수를 구하시오.
 		System.out.println("8번 문제");
+		if (b[0] < b[1]) {
+			b[0] = b[1];
+		} if (b[1] < b[2]) {
+			b[0] = b[2];
+		} if (b[2] < b[3]) {
+			b[0] = b[3];
+		} if (b[3] < b[4]) {
+			b[0] = b[4];
+		} if (b[1] < b[2]) {
+			b[0] = b[5];
+		}
 		System.out.println(b[0]);
 		
 		// 문제 9~12. Random 이라는 클래스로 객체를 만들어서 r이라는 참조변수로 참조해서 사용해보자.
@@ -133,11 +165,19 @@ public class _03_Q {
 		//		 조건 : 형변환은 사용하지 않는다. 메서드는 charAt()만 사용한다.
 		System.out.println("특별 1번 문제");
 		String c = "6/4/3/2/5/1/4/5/6/7/8/9/1/2/3/4/5/6";
+		int cNum = 0;
 		for (int i = 0; i < c.length(); i++) {
 			if (c.charAt(i) != '/') {
+				cNum = c.charAt(i)-48;
+				d[cNum]++;
 			}
 		}
-		
+		for (int k = 0; k < 10; k++) {
+			if (k == 9) {
+				System.out.println(d[k]);
+			} else    
+			System.out.print(d[k]+",");
+		}
 		
 		// 특별2. 문자열 e는 해충에 대한 숫자를 카운팅한 결과이다.
 		//		 해충의 갯수를 모두 합하시오.
@@ -145,28 +185,28 @@ public class _03_Q {
 		//		 형변환이 필요하면 검색하여 사용하시오.
 		System.out.println("특별 2번 문제");
 		String e = "67/414/1/23/32/45/54/12/11/232";
-		int eSum = 0;
 		int l = 1;
-		for (int i = 6; i < e.length(); i++) {
-			if (e.charAt(i) == '/') {
-				for (int k = 1; k < 5; k++) {
-					if (e.charAt(i - k) != '/') {
-						eSum = e.charAt(i-k);
-						l *= 10;
-						System.out.println(e.charAt(i-k));
-					} else if (e.charAt(i - k) == '/') {
-						l = 1;
-						k = 5;
-//						System.out.println(eSum);
-					}
+		int cntE = 0;
+		int sumE = 0;
+		for (int i = 0; i < e.length(); i++) {
+			if (e.charAt(i) != '/') {
+				cntE++;
+			} if (e.charAt(i) == '/') {
+				for (int k = 1; k <= cntE; k++) {
+					sumE += ((int)e.charAt(i-k)-48)*l;
+					l *= 10;
+				}
+				l = 1;
+				cntE = 0;
+			}
+			if (i == e.length()-1) {
+				for (int k = 0; k < cntE; k++) {
+					sumE += ((int)e.charAt(i-k)-48)*l;
+					l *= 10;
 				}
 			}
 		}
-		
-		
-		
-		
-		
+		System.out.println(sumE);
 	}
 
 }
