@@ -91,30 +91,41 @@ public class _01_Q {
 		//		  제거 대상 캐릭터 번호와 갯수, 시작위치 인덱스를 모두 출력하시오.
 		System.out.println("문제 8번");
 		int[] pang = {1,0,0,0,2,3,4,4,6,2,2,2,2,5};
+		int cntPang = 0;
 		for (int i = 1; i < pang.length-1; i++) {
-			if (pang[i] == pang[i+1] && pang[i] == pang[i-1]) {
-				System.out.println(i);
-			}
+			cntPang = 0;
+			for (int k = i; k < pang.length; k++) {
+				if (pang[k] != pang[i]) {
+					break;
+				} else {
+					cntPang++;
+				}
+			} if (cntPang >= 3) {
+				System.out.println("캐릭터 번호:"+pang[i]+", 갯수:"+cntPang+", 인덱스:"+i);
+			} i = i + cntPang - 1;
 		}
 		
 		// 문제 9. 가장 긴 터널의 알파벳 이름과 숫자를 찾으세요.
 		System.out.println("문제 9번");
 		String ttt ="aabbbcccaaaaddbbbaaaaa";
-		int cntTtt = 1;
-		int maxCnt = 1;
-		char tt = ' ';
-		for (int i = 0; i < ttt.length()-1; i++) {
-			if (ttt.charAt(i) == ttt.charAt(i+1)) {
-				cntTtt++;
-				if (maxCnt < cntTtt) {
-					maxCnt = cntTtt;
-					tt = ttt.charAt(i);
+		int cntTtt = 0;
+		int maxCnt = 0;
+		char maxChar = ' ';
+		for (int i = 0; i < ttt.length(); i++) {
+			cntTtt = 0;
+			for (int k = i; k < ttt.length(); k++) {
+				if (ttt.charAt(k) != ttt.charAt(i)) {
+					break;
+				} else {
+					cntTtt++;
 				}
-			} if (ttt.charAt(i) != ttt.charAt(i+1)) {
-				cntTtt = 1;
+			} if (maxCnt < cntTtt) {
+				maxCnt = cntTtt;
+				maxChar = ttt.charAt(i);
 			}
+			i = i + cntTtt - 1;
 		}
-		System.out.println(tt+" "+maxCnt);
+		System.out.println(maxChar+" "+maxCnt);
 		
 		// 문제 10. arr배열에서 0이 의미하는 것은 공터이다.
 		//		   size는 건물의 크기이다. 건물은 하나만 짓는다. 공터는 연속적으로 있어야 한다.
@@ -124,15 +135,15 @@ public class _01_Q {
 		int[] arr = {1,0,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,1};
 		int cntArr = 0;
 		int size = 2;
-		for (int i = 0; i < arr.length - (size - 1); i++) {
-			if (arr[i] == 0 && arr[i] == arr[i+size-1]) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == 0) {
 				for (int k = 1; k < size; k++) {
-					if (arr[i] == arr[i+k]) {
+					if (arr[i] != arr[i+k]) {
+						break;
+					} else if (arr[i] == arr[i+k]) {
 						if (k == size - 1) {
 							cntArr++;
 						}
-					} if (arr[i] != arr[i+k]) {
-						k = size;
 					}
 				}
 			}
@@ -162,7 +173,7 @@ public class _01_Q {
 			System.out.println();
 		}
 		
-		// 문제 12. 9번 문제에서 for문 2개만 사용하기. if문은 갯수 상관없음.
+		// 문제 12. 11번 문제에서 for문 2개만 사용하기. if문은 갯수 상관없음.
 		System.out.println("문제 12번");
 		
 		
