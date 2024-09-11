@@ -12,6 +12,14 @@ public class _01_test {
 		for (int i = 0; i < a[0].length; i++) {
 			System.out.println(a[2][i]);
 		}
+		
+		// 모든 값을 출력하기 위해 for문을 사용
+		// a의 2번째 행의 모든 값이 조건이므로
+		// a[2][i] 에서 i에는 모든 열의 인덱스가 들어가야하므로 i는 0부터 a[0].length-1까지 입력되어야함.
+		// 출력을 해야하므로 sysout
+		
+		
+		
 	}
 
 }

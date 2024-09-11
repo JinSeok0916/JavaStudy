@@ -12,6 +12,12 @@ public class _03_test {
 		for (int i = 0; i < a.length; i++) {
 			System.out.println(a[i][2]);
 		}
+		
+		// 모든 값을 출력하기 위해 for문 작성
+		// 2열의 모든 값이 조건이므로 a[i][2]로 고정
+		// i는 모든 행의 값이 조건이므로 0부터 a.length-1까지 입력되어야함
+		// 순서대로이기 때문에 다른 조건 없이 출력을 위해 sysout 작성
+		
 	}
 
 }
