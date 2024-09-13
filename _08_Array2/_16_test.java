@@ -20,7 +20,6 @@ public class _16_test {
 			for (int i = round; i < a.length; i++) {
 				for (int j = round; j < a[0].length; j++) {
 					if (i == round && j < a[0].length-(round+1)) {
-//						System.out.println(i+" "+(j)+" "+a[i][j]);
 						b[i][j+1] = a[i][j];
 					}
 					else if (i < a.length-(round+1) && j == a[0].length - (round+1)) {
@@ -39,7 +38,7 @@ public class _16_test {
 				}
 			}
 			if (b[a.length/2][a[0].length/2] == 0)
-				b[a.length/2][a[0].length/2] = a.length*a[0].length/2+1;
+				b[a.length/2][a[0].length/2] = a[a.length/2][a[0].length/2];
 		}
 		
 		
