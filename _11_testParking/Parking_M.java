@@ -31,6 +31,7 @@ public class Parking_M {
 			}
 		}
 	}
+	
 	public void add() {
 		Parking_O car = new Parking_O();
 		System.out.println(" - 주차등록할 차번호와 소유자명을 입력하세요. - ");
@@ -44,6 +45,7 @@ public class Parking_M {
 			}
 		}
 	}
+	
 	public void find() {
 		System.out.println(" - 조회할 차번호 및 소유자명을 입력하세요. - ");
 		int num = in.nextInt();
@@ -52,28 +54,24 @@ public class Parking_M {
 		for (int i = 0; i < carList.length; i++) {
 			if (carList[i] != null && carList[i].num == num && carList[i].name.equals(name)) {
 				carList[i].data();
-				break;
-			}
-			else {
-				System.out.println("등록된 차가 없습니다.");
-				break;
 			}
 		} 
-		
 	}
+	
 	public void list() {
+		int cnt = 0;
 		System.out.println(" - 전체 등록 현황 보기 - ");
 		for (int i = 0; i < carList.length; i++) {
 			if (carList[i] != null) {
 				carList[i].data();
+				cnt++;
+			} else
 				break;
-			}
-			else {
-				System.out.println("등록된 차가 없습니다.");
-				break;
-			}
 		}
+		if (cnt == 0)
+			System.out.println("등록된 차가 없습니다.");
 	}
+	
 	public void delete() {
 		System.out.println(" - 삭제할 차번호 및 소유자명을 입력하세요. - ");
 		int num = in.nextInt();
