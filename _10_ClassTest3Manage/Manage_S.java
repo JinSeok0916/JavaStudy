@@ -7,7 +7,9 @@ public class Manage_S {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		Manage_M manage = new Manage_M();
-		Manage_EM eManage= new Manage_EM();
+		Manage_EM eManage = new Manage_EM();
+		manage.eventM = eManage;
+		eManage.manage = manage;
 		
 		while (true) {
 			System.out.println();

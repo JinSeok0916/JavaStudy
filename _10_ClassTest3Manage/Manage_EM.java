@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class Manage_EM {
 	Scanner in = new Scanner(System.in);
 	Manage_E[] eList = new Manage_E[10];
-	Manage_EM() {
-		
-	}
+	Manage_M manage = null;
+	Manage_C cus = new Manage_C();
 	
 	public void restart() {
 		while (true) {
@@ -48,12 +47,19 @@ public class Manage_EM {
 		event.title = in.nextLine();
 		System.out.println("이벤트 내용을 입력하세요.");
 		event.con = in.nextLine();
-		for (int i = 0; i < eList.length; i++) {
-			if (eList[i] == null) {
-				eList[i] = event;
-				cnt++;
-				System.out.println("등록되었습니다.");
-				break;
+		System.out.println("고객 ID를 입력하세요.");
+		cus.id = in.nextLine();
+		event.id = cus.id;
+		for (int i = 0; i < manage.cList.length; i++) {
+			if (manage.cList[i] != null && manage.cList[i].id.equals(event.id)) {
+				for (int j = 0; j < eList.length; j++) {
+					if (eList[j] == null) {
+						eList[j] = event;
+						cnt++;
+						System.out.println("등록되었습니다.");
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -73,29 +79,37 @@ public class Manage_EM {
 	}
 	
 	public void mod() {
-		System.out.println("수정할 이벤트 제목을 입력하세요.");
-		String title = in.nextLine();
-		for (int i = 0; i < eList.length; i++) {
-			if (eList[i] != null && eList[i].title.equals(title)) {
-				System.out.println("수정할 제목을 입력하세요.");
-				title = in.nextLine();
-				eList[i].title = title;
-				System.out.println("수정할 내용을 입력하세요.");
-				String con = in.nextLine();
-				eList[i].con = con;
-				System.out.println("수정되었습니다.");
+		if (cnt == 0)
+			System.out.println("수정할 이벤트가 없습니다.");
+		else {
+			System.out.println("수정할 이벤트 제목을 입력하세요.");
+			String title = in.nextLine();
+			for (int i = 0; i < eList.length; i++) {
+				if (eList[i] != null && eList[i].title.equals(title)) {
+					System.out.println("수정할 제목을 입력하세요.");
+					title = in.nextLine();
+					eList[i].title = title;
+					System.out.println("수정할 내용을 입력하세요.");
+					String con = in.nextLine();
+					eList[i].con = con;
+					System.out.println("수정되었습니다.");
+				}
 			}
 		}
 	}
 	
 	public void del() {
-		System.out.println("삭제할 이벤트 제목을 입력하세요.");
-		String title = in.nextLine();
-		for (int i = 0; i < eList.length; i++) {
-			if (eList[i] != null && eList[i].title.equals(title)) {
-				eList[i] = null;
-				cnt--;
-				System.out.println("삭제되었습니다.");
+		if (cnt == 0)
+			System.out.println("삭제할 이벤트가 없습니다.");
+		else {
+			System.out.println("삭제할 이벤트 제목을 입력하세요.");
+			String title = in.nextLine();
+			for (int i = 0; i < eList.length; i++) {
+				if (eList[i] != null && eList[i].title.equals(title)) {
+					eList[i] = null;
+					cnt--;
+					System.out.println("삭제되었습니다.");
+				}
 			}
 		}
 	}
