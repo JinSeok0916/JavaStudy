@@ -1,5 +1,6 @@
-package _10_ClassTest3Manage;
+package _10_ClassTest4Manage;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manage_M {
@@ -8,7 +9,8 @@ public class Manage_M {
 	// Manage_C의 객체를 만든 것이 아니라
 	// Manage_C 객체의 주소값을 저장할 배열을 생성한 것이다.
 	// cList는 참조변수이고 Manage_C 객체의 주소를 저장한다.
-	Manage_C[] cList = new Manage_C[10];
+//	Manage_C[] cList = new Manage_C[10];
+	ArrayList<Manage_C> cList = new ArrayList<>();
 	Manage_EM eventM = null;
 	
 	public void restart() {
@@ -54,29 +56,22 @@ public class Manage_M {
 		cus.id = in.nextLine();
 		System.out.println("이름을 입력해주세요");
 		cus.name = in.nextLine();
-		for (int i = 0; i < cList.length; i++) {
-			if (cList[i] == null) {
-				cList[i] = cus;
-				cnt++;
-				System.out.println("등록되었습니다.");
-				break;
-			}
-		}
+		cList.add(cus);
+		cnt++;
+		System.out.println("등록되었습니다.");
 	}
 	
 	public void info() {
 		if (cnt == 0)
 			System.out.println("입력된 고객 정보가 없습니다.");
 		else 
-			for (int i = 0; i < cList.length; i++) {
-				if (cList[i] != null) {
-					System.out.println((i+1)+"번 고객");
-					cList[i].data();
-					for (int j = 0; j < eventM.eList.length; j++) {
-						if (eventM.eList[j] != null && eventM.eList[j].id.equals(cList[i].id)) {
-							eventM.eList[j].list();
-							System.out.println();
-						}
+			for (int i = 0; i < cList.size(); i++) {
+				System.out.println((i+1)+"번 고객");
+				cList.get(i).data();
+				for (int j = 0; j < eventM.eList.length; j++) {
+					if (eventM.eList[j] != null && eventM.eList[j].id.equals(cList.get(i).id)) {
+						eventM.eList[j].list();
+						System.out.println();
 					}
 				}
 			}
@@ -86,11 +81,11 @@ public class Manage_M {
 		int count = 0;
 		System.out.println("수정할 ID를 입력하세요.");
 		String id = in.nextLine();
-		for (int i = 0; i < cList.length; i++) {
-			if (cList[i] != null && cList[i].id.equals(id)) {
+		for (int i = 0; i < cList.size(); i++) {
+			if (cList.get(i).id.equals(id)) {
 				System.out.println("수정할 이름을 입력하세요.");
 				String name = in.nextLine();
-				cList[i].name = name;
+				cList.get(i).name = name;
 				count = 1;
 			}
 		}
@@ -102,9 +97,9 @@ public class Manage_M {
 		int count = 0;
 		System.out.println("삭제할 ID를 입력하세요.");
 		String id = in.nextLine();
-		for (int i = 0; i < cList.length; i++) {
-			if (cList[i] != null && cList[i].id.equals(id)) {
-				cList[i] = null;
+		for (int i = 0; i < cList.size(); i++) {
+			if (cList.get(i).id.equals(id)) {
+				cList.remove(i);
 				System.out.println("삭제되었습니다.");
 				cnt--;
 				count = 1;

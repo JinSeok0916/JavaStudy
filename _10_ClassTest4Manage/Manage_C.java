@@ -1,4 +1,4 @@
-package _10_ClassTest3Manage;
+package _10_ClassTest4Manage;
 
 public class Manage_C {
 	// ID와 이름

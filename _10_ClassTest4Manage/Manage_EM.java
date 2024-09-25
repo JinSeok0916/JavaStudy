@@ -1,4 +1,4 @@
-package _10_ClassTest3Manage;
+package _10_ClassTest4Manage;
 
 import java.util.Scanner;
 
@@ -48,8 +48,8 @@ public class Manage_EM {
 		event.con = in.nextLine();
 		System.out.println("고객 ID를 입력하세요.");
 		event.id = in.nextLine();
-		for (int i = 0; i < manage.cList.length; i++) {
-			if (manage.cList[i] != null && manage.cList[i].id.equals(event.id)) {
+		for (int i = 0; i < manage.cList.size(); i++) {
+			if (manage.cList.get(i).id.equals(event.id)) {
 				for (int j = 0; j < eList.length; j++) {
 					if (eList[j] == null) {
 						eList[j] = event;
