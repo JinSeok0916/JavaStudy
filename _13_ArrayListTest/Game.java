@@ -41,10 +41,14 @@ public class Game {
 				list.add(gM.wordList.get(i));
 			}
 		}
-		System.out.println("총 "+gM.wordList.size()+"개 중 "+sum+"개 맞추셨습니다.");
-		System.out.println("아래는 틀린 문제입니다.");
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).data();
+		if (gM.wordList.size() == sum) {
+			System.out.println(gM.wordList.size()+"문제 모두 다 맞추셨습니다.");
+		} else {
+			System.out.println("총 "+gM.wordList.size()+"문제 중 "+sum+"문제 맞추셨습니다.");
+			System.out.println("아래는 틀린 문제입니다.");
+			for (int i = 0; i < list.size(); i++) {
+				list.get(i).data();
+			}
 		}
 	}
 	
