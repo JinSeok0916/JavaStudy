@@ -16,7 +16,6 @@ public class StudentM {
 	ArrayList<StudentL> sList = new ArrayList<>();
 	SubjectM subM = null;
 	Login log = null;
-	StudentL std = null;
 	
 	
 	public void sManage() {
@@ -85,7 +84,6 @@ public class StudentM {
 	}
 	
 	public void search() {
-		int k = 0;
 		int cnt = 0;
 		System.out.println();
 		System.out.println("검색할 학생의 이름을 입력하세요.");
@@ -139,13 +137,13 @@ public class StudentM {
 			System.out.println(" 이름	: "+sList.get(i).getName());
 			System.out.println(" 전화번호	: "+sList.get(i).getpNum());
 			System.out.println(" 학년	: "+sList.get(i).getGrade());
+			System.out.println(" 과목 수	: "+sList.get(i).getsListSize());
 		}
 		if (sList.size() == 0) {
 			System.out.println();
 			System.out.println("등록된 학생의 정보가 없습니다.");
 		}
 	}
-	
 	
 	
 	

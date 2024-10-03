@@ -8,7 +8,7 @@ public class StudentL {
 	private String name = null;
 	private String pNum = null;
 	private String grade = null;
-	
+	private ArrayList<String> sList = new ArrayList<>();
 	
 	String getId() {
 		return id;
@@ -42,12 +42,16 @@ public class StudentL {
 		this.grade = grade;
 	}
 	
-	String getsName() {
-		return subM.list
+	String getsList() {
+		return sList.toString();
+	}
+	
+	int getsListSize() {
+		return sList.size();
 	}
 	
 	void setsName(String sName) {
-		this.sName = sName;
+		sList.add(sName);
 	}
 	
 	

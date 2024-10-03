@@ -57,6 +57,7 @@ public class Login {
 		System.out.println();
 		System.out.println("전체 교과목 리스트입니다.");
 		for (int i = 0; i < subM.sList.size(); i++) {
+			System.out.println();
 			System.out.print(" " + (i+1) + "번 강의 : ");
 			subM.list();
 		}
@@ -68,7 +69,7 @@ public class Login {
 	}
 	
 	public void list() {
-		System.out.println(stdM.sList.get(z).getsName());
+		System.out.println(stdM.sList.get(z).getsList());
 	}
 	
 	
