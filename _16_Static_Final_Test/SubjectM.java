@@ -37,7 +37,7 @@ public class SubjectM {
 		while (true) {
 			int cnt = 0;
 			System.out.println();
-			System.out.print("교과명 : ");
+			System.out.print(" 교과명	: ");
 			String name = in.nextLine();
 			for (int i = 0; i < sList.size(); i++) {
 				if (name.equals(sList.get(i).getName())) {
@@ -53,10 +53,10 @@ public class SubjectM {
 				break;
 			}
 		}
-		System.out.print("강의실 : ");
+		System.out.print(" 강의실	: ");
 		String num = in.nextLine();
 		sub.setNum(num);
-		System.out.print("담당교수 : ");
+		System.out.print(" 담당교수	: ");
 		String proName = in.nextLine();
 		sub.setProName(proName);
 		sList.add(sub);

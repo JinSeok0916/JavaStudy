@@ -52,7 +52,7 @@ public class StudentM {
 			System.out.println("아이디와 이름, 전화번호, 학년을 입력해주세요.");
 			while (true) {
 				int cnt = 0;
-				System.out.print("아이디 : ");
+				System.out.print(" 아이디	: ");
 				String id = in.nextLine();
 				for (int i = 0; i < sList.size(); i++) {
 					if (id.equals(sList.get(i).getId())) {
@@ -69,13 +69,13 @@ public class StudentM {
 					break;
 				}
 			}
-			System.out.print("이름 : ");
+			System.out.print(" 이름	: ");
 			String name = in.nextLine();
 			std.setName(name);
-			System.out.print("전화번호 : ");
+			System.out.print(" 전화번호	: ");
 			String pNum = in.nextLine();
 			std.setpNum(pNum);
-			System.out.print("학년 : ");
+			System.out.print(" 학년	: ");
 			String grade = in.nextLine();
 			std.setGrade(grade);
 			sList.add(std);

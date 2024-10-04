@@ -14,7 +14,7 @@ public class Login {
 		System.out.println();
 		System.out.println("ID를 입력해주세요.");
 		while (true) {
-			System.out.print("ID : ");
+			System.out.print(" ID : ");
 			String id = in.nextLine();
 			for (int i = 0; i < stdM.sList.size(); i++) {
 				if (stdM.sList.get(i).getId().equals(id)) {
@@ -22,16 +22,16 @@ public class Login {
 					System.out.println("로그인 되었습니다.");
 					cnt = 1;
 					z = i;
+					manage();
 					break;
 				}
 			}
 			if (cnt == 0) {
 				System.out.println();
-				System.out.println("다시 입력해주세요.");
-			} else
+				System.out.println("등록된 ID가 없습니다.");
 				break;
+			}
 		}
-		manage();
 	}
 	
 	public void manage() {

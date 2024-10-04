@@ -36,7 +36,7 @@ public class Main {
 				subM.sManage();
 			else if (selNum.equals("3"))
 				log.login();
-			else if (selNum.equals("3"))
+			else if (selNum.equals("4"))
 				break;
 			else
 				System.out.println("다시 입력해주세요.");
