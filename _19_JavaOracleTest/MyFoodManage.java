@@ -54,6 +54,7 @@ public class MyFoodManage {
 		// 커넥션 가져오기
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "11111111");
 //		System.out.println("1");
+//		String sql = "insert myfood into values(?,?,?,?)";
 		String sql = "insert into myfood values(?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, f.getFoodType());
