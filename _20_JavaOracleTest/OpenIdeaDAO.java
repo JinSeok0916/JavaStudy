@@ -10,7 +10,7 @@ public class OpenIdeaDAO {
 	private String userName = "system";
 	private String password = "11111111";
 	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	private String driverName = "oracle.jdbc.driver.OracleDriver";
+	private String driverName = "oracle.jdbc.driver.OracleDriver1";
 	private Connection con = null;
 	public static OpenIdeaDAO DAO = null;
 	
@@ -129,7 +129,7 @@ public class OpenIdeaDAO {
 	public OpenIdeaDTO searchTitle(String title) {
 		if (con()) {
 			try {
-				String sql = "select * from openidea where title = ?";
+				String sql = "select * from openidea where title like '%?%'";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, title);
 				ResultSet rs = ps.executeQuery();
@@ -159,7 +159,7 @@ public class OpenIdeaDAO {
 	public void modTitle(OpenIdeaDTO DTO) {
 		if (con()) {
 			try {
-				String sql = "update openidea set title = ?";
+				String sql = "update openidea set title = ? where num = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, DTO.getTitle());
 				ps.setString(2, DTO.getNum());
@@ -181,14 +181,15 @@ public class OpenIdeaDAO {
 	public void modExplain(OpenIdeaDTO DTO) {
 		if (con()) {
 			try {
-				String sql = "update openidea set explain = ?";
+				String sql = "update openidea set explain = ? where num = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, DTO.getExplain());
-				System.out.println("성공1");
+				ps.setString(2, DTO.getNum());
+//				System.out.println("성공1");
 				ps.executeUpdate();
-				System.out.println("성공2");
+//				System.out.println("성공2");
 				con.commit();
-				System.out.println("성공3");
+//				System.out.println("성공3");
 			} catch (Exception e) {
 			} finally {
 				if (con != null) {
@@ -202,7 +203,27 @@ public class OpenIdeaDAO {
 		}
 	}
 	
-	
+	public void del(OpenIdeaDTO DTO) {
+		if (con()) {
+			try {
+				String sql = "delete from openidea where num = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, DTO.getNum());
+				ps.executeUpdate();
+				con.commit();
+			} catch (Exception e) {
+				// TODO: handle exception
+			} finally {
+				if (con != null) {
+					try {
+						con.close();
+					} catch (Exception e2) {
+						// TODO: handle exception
+					}
+				}
+			}
+		}
+	}
 	
 	
 	

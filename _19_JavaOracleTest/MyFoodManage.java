@@ -3,6 +3,7 @@ package _19_JavaOracleTest;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class MyFoodManage {
@@ -77,7 +78,8 @@ public class MyFoodManage {
 		System.out.println("삭제할 음식의 이름을 입력하세요.");
 		System.out.print("음식 이름 : ");
 		String name = in.nextLine();
-		String sql = "delete from myfood where name = ".concat("'").concat(name).concat("'");
+//		String sql = "delete from myfood where name = ".concat(name);
+		String sql = "delete from myfood where name = "+"'"+name+"'";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.executeUpdate();
@@ -115,11 +117,17 @@ public class MyFoodManage {
 		String sql = "select * from myfood";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.executeUpdate();
-		
+		ResultSet rs = ps.executeQuery();
 		con.commit();
 		
-		System.out.println(sql);
+		while (rs.next()) {
+			MyFoodDTO DTO = new MyFoodDTO();
+			DTO.setFoodType(rs.getString("type"));
+			DTO.setFoodName(rs.getString("name"));
+			DTO.setFoodTaste(rs.getString("taste"));
+			DTO.setFoodMain(rs.getString("main"));
+			System.out.println(DTO.toString());
+		}
 		
 		if (con != null)
 			con.close();

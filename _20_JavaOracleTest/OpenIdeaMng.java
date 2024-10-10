@@ -34,12 +34,21 @@ public class OpenIdeaMng {
 				break;
 			else
 				System.out.println("다시 입력해주세요.");
+//			switch (selNum) {
+//				case 1: sug(); break;
+//				case 2: mod(); break;
+//				case 3: del(); break;
+//				case 4: list(); break;
+//				case 5: search(); break;
+//				case 6: break;
+//				default : System.out.println("다시 입력해주세요");
+//			}
 		}
 	}
 
 	private void sug() {
 		System.out.println();
-		System.out.println(" - 제안서 - ");
+		System.out.println(" - 아이디어 제안서 - ");
 		System.out.println("제목을 입력하세요.");
 		System.out.print("제목 : ");
 		String title = in.nextLine();
@@ -93,6 +102,7 @@ public class OpenIdeaMng {
 					String explain = in.nextLine();
 					DTO.setExplain(explain);
 					DAO.modExplain(DTO);
+					break;
 				} else if (number == 3) {
 					break;
 				} else {
@@ -105,10 +115,18 @@ public class OpenIdeaMng {
 	}
 	
 	private void del() {
+		list();
 		System.out.println();
 		System.out.println("삭제할 아이디어의 번호를 입력하세요.");
 		System.out.print("번호 : ");
 		String num = in.nextLine();
+		OpenIdeaDTO DTO = DAO.searchNum(num);
+		if (DTO != null) {
+			DAO.del(DTO);
+			System.out.println("삭제되었습니다.");
+		} else {
+			 System.out.println("해당하는 번호의 아이디어가 없습니다.");
+		}
 	}
 	
 	private void list() {
@@ -118,7 +136,6 @@ public class OpenIdeaMng {
 		for (OpenIdeaDTO DTO : iList) {
 			System.out.println(DTO.toString());
 		}
-		
 	}
 	
 	private void search() {
@@ -133,8 +150,6 @@ public class OpenIdeaMng {
 			System.out.println(DTO.toString());
 		} else
 			System.out.println("해당하는 제목의 아이디어가 없습니다.");
-		
-		
 	}
 	
 	

@@ -1,6 +1,7 @@
 package _19_JavaOracleTest;
 
 public class MyFoodDTO {
+	
 	// 내가 좋아하는 음식
 	private String foodType = null;
 	private String foodName = null;
@@ -30,5 +31,10 @@ public class MyFoodDTO {
 	}
 	public void setFoodMain(String foodMain) {
 		this.foodMain = foodMain;
+	}
+	@Override
+	public String toString() {
+		return "MyFoodDTO [foodType=" + foodType + ", foodName=" + foodName + ", foodTaste=" + foodTaste + ", foodMain="
+				+ foodMain + "]";
 	}
 }
