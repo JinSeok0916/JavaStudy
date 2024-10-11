@@ -10,7 +10,7 @@ public class OpenIdeaDAO {
 	private String userName = "system";
 	private String password = "11111111";
 	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	private String driverName = "oracle.jdbc.driver.OracleDriver1";
+	private String driverName = "oracle.jdbc.driver.OracleDriver";
 	private Connection con = null;
 	public static OpenIdeaDAO DAO = null;
 	
@@ -71,12 +71,12 @@ public class OpenIdeaDAO {
 		ArrayList<OpenIdeaDTO> iList = new ArrayList<>();
 		if (con()) {
 			try {
-				String sql = "select * from openidea";
+				String sql = "select * from openidea order by num asc";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					OpenIdeaDTO temp = new OpenIdeaDTO();
-					temp.setNum(rs.getString("num"));
+					temp.setNum(rs.getInt("num"));
 					temp.setTitle(rs.getString("title"));
 					temp.setExplain(rs.getString("explain"));
 					temp.setName(rs.getString("name"));
@@ -105,7 +105,7 @@ public class OpenIdeaDAO {
 				ResultSet rs = ps.executeQuery();
 				if (rs.next()) {
 					OpenIdeaDTO temp = new OpenIdeaDTO();
-					temp.setNum(rs.getString("num"));
+					temp.setNum(rs.getInt("num"));
 					temp.setTitle(rs.getString("title"));
 					temp.setExplain(rs.getString("explain"));
 					temp.setName(rs.getString("name"));
@@ -135,7 +135,7 @@ public class OpenIdeaDAO {
 				ResultSet rs = ps.executeQuery();
 				if (rs.next()) {
 					OpenIdeaDTO temp = new OpenIdeaDTO();
-					temp.setNum(rs.getString("num"));
+					temp.setNum(rs.getInt("num"));
 					temp.setTitle(rs.getString("title"));
 					temp.setExplain(rs.getString("explain"));
 					temp.setName(rs.getString("name"));
@@ -162,7 +162,7 @@ public class OpenIdeaDAO {
 				String sql = "update openidea set title = ? where num = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, DTO.getTitle());
-				ps.setString(2, DTO.getNum());
+				ps.setInt(2, DTO.getNum());
 				ps.executeUpdate();
 				con.commit();
 			} catch (Exception e) {
@@ -184,7 +184,7 @@ public class OpenIdeaDAO {
 				String sql = "update openidea set explain = ? where num = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, DTO.getExplain());
-				ps.setString(2, DTO.getNum());
+				ps.setInt(2, DTO.getNum());
 //				System.out.println("성공1");
 				ps.executeUpdate();
 //				System.out.println("성공2");
@@ -208,7 +208,7 @@ public class OpenIdeaDAO {
 			try {
 				String sql = "delete from openidea where num = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setString(1, DTO.getNum());
+				ps.setInt(1, DTO.getNum());
 				ps.executeUpdate();
 				con.commit();
 			} catch (Exception e) {

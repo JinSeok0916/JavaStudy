@@ -1,15 +1,15 @@
 package _20_JavaOracleTest;
 
 public class OpenIdeaDTO {
-	private String num = null;
+	private int num = 0;
 	private String title = null;
 	private String explain = null;
 	private String name = null;
 	
-	public String getNum() {
+	public int getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
 	public String getTitle() {
